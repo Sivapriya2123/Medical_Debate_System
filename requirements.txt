@@ -1,0 +1,12 @@
+datasets
+sentence-transformers
+chromadb
+rank-bm25
+numpy
+pandas
+tqdm
+jupyter
+ipykernel
+ipywidgets
+transformers
+torch
