@@ -10,3 +10,4 @@ data/
 *.save
 *_old.py/
 chroma_store*/
+.env
