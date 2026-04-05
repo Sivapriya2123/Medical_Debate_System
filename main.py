@@ -15,6 +15,12 @@ from src.retrieval.reranker import load_reranker
 from src.retrieval.retrieve_evidence import retrieve_evidence_hybrid_reranked
 from src.debate import run_debate
 from src.Judge.pipeline import run_judge_on_transcript
+from src.Judge.evaluation import (
+    compute_evaluation_report,
+    export_results_to_csv,
+    export_results_to_json,
+    print_comparison_table,
+)
 
 
 
@@ -97,6 +103,23 @@ def main():
     if result:
         print(f"\nCorrect: {result.correct}")
     print("=" * 60)
+
+    # ── 6. Save artifacts to outputs/ ──
+    if result:
+        report = compute_evaluation_report([result], system_name="full_system")
+        reports = [report]
+
+        print("\n" + "=" * 60)
+        print("EVALUATION REPORT")
+        print("=" * 60)
+        print_comparison_table(reports)
+
+        csv_path = export_results_to_csv(reports)
+        json_path = export_results_to_json(reports)
+        print(f"\nArtifacts saved:")
+        print(f"  CSV  : {csv_path}")
+        print(f"  JSON : {json_path}")
+        print("=" * 60)
 
 
 if __name__ == "__main__":
