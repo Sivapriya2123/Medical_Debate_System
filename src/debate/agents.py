@@ -1,6 +1,6 @@
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
-from typing import List
+from typing import Dict, List
 
 from src.debate.prompts import (
     DOCTOR_A_SYSTEM,
@@ -10,6 +10,41 @@ from src.debate.prompts import (
     format_evidence_for_prompt,
     parse_agent_response,
 )
+
+# ── Token Usage Tracking ─────────────────────────────────────────
+
+_token_usage: Dict[str, int] = {
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0,
+    "num_calls": 0,
+}
+
+
+def reset_token_usage() -> None:
+    """Reset the token usage counters (call before each experiment)."""
+    _token_usage["prompt_tokens"] = 0
+    _token_usage["completion_tokens"] = 0
+    _token_usage["total_tokens"] = 0
+    _token_usage["num_calls"] = 0
+
+
+def get_token_usage() -> Dict[str, int]:
+    """Return a copy of the current token usage stats."""
+    return dict(_token_usage)
+
+
+def _track_tokens(response) -> None:
+    """Extract and accumulate token usage from an LLM response."""
+    usage = getattr(response, "response_metadata", {}).get("token_usage", {})
+    if not usage:
+        usage = getattr(response, "usage_metadata", {}) or {}
+    _token_usage["prompt_tokens"] += usage.get("prompt_tokens", 0) or usage.get("input_tokens", 0)
+    _token_usage["completion_tokens"] += usage.get("completion_tokens", 0) or usage.get("output_tokens", 0)
+    _token_usage["total_tokens"] += usage.get("total_tokens", 0) or (
+        usage.get("input_tokens", 0) + usage.get("output_tokens", 0)
+    )
+    _token_usage["num_calls"] += 1
 
 
 def create_llm(model: str = "openai/gpt-4o-mini", temperature: float = 0.7) -> ChatOpenAI:
@@ -46,6 +81,7 @@ def invoke_agent(
     history.append({"role": "user", "content": user_message})
     messages = build_agent_messages(system_prompt, history)
     response = llm.invoke(messages)
+    _track_tokens(response)
     assistant_text = response.content
     history.append({"role": "assistant", "content": assistant_text})
     return assistant_text

@@ -1,6 +1,8 @@
 import re
 from typing import List, Dict, Any
 
+from src.retrieval.temporal_filter import add_temporal_metadata
+
 
 def clean_text(text: str) -> str:
     if not text:
@@ -48,5 +50,8 @@ def chunk_documents(dataset) -> List[Dict[str, Any]]:
                 "year": None,   # keep placeholder for future temporal filtering
             }
         )
+
+    # Enrich with temporal metadata (estimated year + recency flag)
+    documents = add_temporal_metadata(documents, recency_threshold=2010)
 
     return documents

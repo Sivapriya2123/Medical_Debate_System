@@ -1,9 +1,10 @@
-"""Experiment runner — compare baseline RAG, debate-only, and full system.
+"""Experiment runner — compare four systems on PubMedQA.
 
-Three systems are evaluated on the same set of PubMedQA questions:
-  1. baseline_rag      — single LLM call with retrieved evidence, no debate.
-  2. debate_no_trust   — full debate, majority-vote judge (no trust scoring).
-  3. full_system       — full debate + trust-aware judge (proposed approach).
+Four systems are evaluated on the same set of PubMedQA questions:
+  1. baseline_no_retrieval — single LLM call, no evidence at all.
+  2. baseline_rag          — single LLM call with retrieved evidence, no debate.
+  3. debate_no_trust       — full debate, majority-vote judge (no trust scoring).
+  4. full_system           — full debate + trust-aware judge (proposed approach).
 """
 
 from __future__ import annotations
@@ -24,6 +25,26 @@ from src.Judge.trust import compute_trust_score
 logger = logging.getLogger(__name__)
 
 # ── Baseline RAG Prompt ─────────────────────────────────────────
+
+BASELINE_NO_RETRIEVAL_SYSTEM = """\
+You are a medical expert answering biomedical research questions.
+Using ONLY your general medical knowledge (no external evidence is provided),
+determine whether the answer to the question is yes, no, or maybe.
+
+You MUST respond in EXACTLY this format:
+
+ANSWER: yes
+EXPLANATION: <brief justification from your medical knowledge>
+
+Rules:
+- ANSWER must be exactly one of: yes, no, maybe
+"""
+
+BASELINE_NO_RETRIEVAL_USER = """\
+MEDICAL QUESTION: {question}
+
+Based on your medical knowledge, what is your answer?"""
+
 
 BASELINE_RAG_SYSTEM = """\
 You are a medical expert answering biomedical research questions.
@@ -49,6 +70,34 @@ Based on the evidence above, what is your answer?"""
 
 
 # ── System Runners ──────────────────────────────────────────────
+
+
+def _run_baseline_no_retrieval(
+    question: str,
+    evidence: List[dict],
+    ground_truth: str,
+    llm,
+) -> ExperimentResult:
+    """Baseline: single LLM call, NO evidence — pure parametric knowledge."""
+    messages = [
+        SystemMessage(content=BASELINE_NO_RETRIEVAL_SYSTEM),
+        HumanMessage(
+            content=BASELINE_NO_RETRIEVAL_USER.format(question=question)
+        ),
+    ]
+
+    response = llm.invoke(messages)
+    answer = _parse_baseline_answer(response.content)
+
+    return ExperimentResult(
+        system_name="baseline_no_retrieval",
+        question=question,
+        ground_truth=ground_truth,
+        predicted_answer=answer,
+        correct=(answer == ground_truth),
+        trust_score=None,
+        metadata={"raw_response": response.content[:500]},
+    )
 
 
 def _run_baseline_rag(
@@ -174,6 +223,7 @@ def _run_full_system(
 # ── Public API ──────────────────────────────────────────────────
 
 SYSTEM_RUNNERS = {
+    "baseline_no_retrieval": _run_baseline_no_retrieval,
     "baseline_rag": _run_baseline_rag,
     "debate_no_trust": _run_debate_no_trust,
     "full_system": _run_full_system,
@@ -204,7 +254,9 @@ def run_single_experiment(
     if llm is None:
         llm = create_llm()
 
-    if system_name == "baseline_rag":
+    if system_name == "baseline_no_retrieval":
+        return _run_baseline_no_retrieval(question, evidence, ground_truth, llm)
+    elif system_name == "baseline_rag":
         return _run_baseline_rag(question, evidence, ground_truth, llm)
     elif system_name == "debate_no_trust":
         return _run_debate_no_trust(question, evidence, ground_truth, max_rounds, llm)

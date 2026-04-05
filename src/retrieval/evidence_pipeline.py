@@ -4,6 +4,10 @@ from src.retrieval.create_embeddings import load_embedding_model, create_embeddi
 from src.retrieval.vector_store import create_chroma_collection, store_documents
 from src.retrieval.bm25_index import build_bm25_index
 from src.retrieval.retrieve_evidence import retrieve_evidence_hybrid
+from src.retrieval.temporal_filter import (
+    filter_evidence_by_recency,
+    compute_temporal_stats,
+)
 
 
 def build_retrieval_pipeline(
@@ -31,7 +35,28 @@ def build_retrieval_pipeline(
     return collection, bm25, documents
 
 
-def search_medical_evidence(query: str, top_k: int = 3, limit: int = 500):
+def search_medical_evidence(
+    query: str,
+    top_k: int = 3,
+    limit: int = 500,
+    temporal_mode: str = "flag",
+    recency_threshold: int = 2010,
+):
+    """Search with optional temporal filtering.
+
+    Args:
+        temporal_mode: 'flag' (add metadata), 'filter' (remove outdated),
+                       'downweight' (reduce outdated scores), 'none' (skip).
+        recency_threshold: Year cutoff for outdated evidence.
+    """
     collection, bm25, documents = build_retrieval_pipeline(limit=limit)
     results = retrieve_evidence_hybrid(collection, bm25, documents, query, top_k=top_k)
+
+    if temporal_mode != "none":
+        results = filter_evidence_by_recency(
+            results,
+            recency_threshold=recency_threshold,
+            mode=temporal_mode,
+        )
+
     return results

@@ -15,8 +15,56 @@ import pandas as pd
 from scipy.stats import pearsonr
 
 from src.Judge.models import EvaluationReport, ExperimentResult
+from src.retrieval.temporal_filter import compute_temporal_stats
+from src.retrieval.conflict_detector import add_conflict_metadata, compute_conflict_stats
 
 logger = logging.getLogger(__name__)
+
+
+# ── Evidence Quality Metrics ──────────────────────────────────────
+
+
+def compute_evidence_error_rate(
+    evidence_list: List[dict],
+    recency_threshold: int = 2010,
+    similarity_threshold: float = 0.7,
+) -> Dict:
+    """Compute evidence quality metrics: outdated fraction + conflict fraction.
+
+    Args:
+        evidence_list: Retrieved evidence dicts (with temporal metadata).
+        recency_threshold: Year cutoff for outdated.
+        similarity_threshold: Cosine sim threshold for conflict detection.
+
+    Returns:
+        Dict with temporal stats, conflict stats, and combined error rate.
+    """
+    temporal = compute_temporal_stats(evidence_list)
+
+    evidence_list, conflicts = add_conflict_metadata(
+        evidence_list, similarity_threshold=similarity_threshold
+    )
+    conflict = compute_conflict_stats(evidence_list, conflicts)
+
+    # Combined evidence error rate: fraction of evidence that is
+    # either outdated OR involved in a conflict
+    total = len(evidence_list)
+    problematic = set()
+    if total > 0:
+        for i, e in enumerate(evidence_list):
+            if e.get("is_outdated", False):
+                problematic.add(i)
+            if e.get("has_conflict", False):
+                problematic.add(i)
+    combined_error = len(problematic) / total if total > 0 else 0.0
+
+    return {
+        "temporal": temporal,
+        "conflict": conflict,
+        "evidence_error_rate": round(combined_error, 4),
+        "num_problematic": len(problematic),
+        "total_evidence": total,
+    }
 
 
 # ── Core Metrics ────────────────────────────────────────────────
@@ -102,24 +150,39 @@ def _compute_trust_correlation(
 # ── Comparison Table ────────────────────────────────────────────
 
 
-def print_comparison_table(reports: List[EvaluationReport]) -> str:
+def print_comparison_table(
+    reports: List[EvaluationReport],
+    token_usage: Optional[Dict[str, Dict[str, int]]] = None,
+) -> str:
     """Pretty-print a markdown table comparing multiple systems.
+
+    Args:
+        reports: List of EvaluationReport objects.
+        token_usage: Optional dict mapping system_name -> token stats.
 
     Returns the table string (also prints it to stdout).
     """
-    header = "| System            | Questions | Accuracy | Error Rate | Trust-Acc Corr |"
-    sep    = "|-------------------|-----------|----------|------------|----------------|"
+    has_tokens = token_usage is not None
+    header = "| System               | Questions | Accuracy | Error Rate | Trust-Acc Corr |"
+    sep    = "|----------------------|-----------|----------|------------|----------------|"
+    if has_tokens:
+        header += " Tokens |"
+        sep    += "--------|"
+
     rows = [header, sep]
 
     for r in reports:
         corr_str = f"{r.trust_correlation:+.4f}" if r.trust_correlation is not None else "N/A"
         row = (
-            f"| {r.system_name:<17} "
+            f"| {r.system_name:<20} "
             f"| {r.num_questions:>9} "
             f"| {r.accuracy:>8.4f} "
             f"| {r.error_rate:>10.4f} "
             f"| {corr_str:>14} |"
         )
+        if has_tokens:
+            tokens = token_usage.get(r.system_name, {}).get("total_tokens", 0)
+            row += f" {tokens:>6} |"
         rows.append(row)
 
     table = "\n".join(rows)

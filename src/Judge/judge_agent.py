@@ -34,6 +34,8 @@ You will be given:
   2. The retrieved evidence passages.
   3. The full debate transcript, including each doctor's position, confidence, \
 and reasoning across all rounds.
+  4. A trust score summarizing debate quality (agreement, reasoning consistency, \
+confidence stability).
 
 Your task is to synthesize the debate and produce a final, well-justified answer.
 
@@ -44,14 +46,15 @@ EXPLANATION: <2-4 sentences citing specific evidence and doctor arguments that \
 drove your decision>
 DEBATE_SUMMARY: <2-3 sentence summary of how the debate unfolded>
 
-Guidelines:
-- If both doctors agree with high confidence, adopt their shared position.
+CRITICAL RULES:
+- When BOTH doctors agree on a position (yes or no), you MUST adopt their \
+shared position. Two independent experts reaching the same conclusion is \
+strong evidence. Do NOT override their consensus with "maybe".
+- When the trust score is HIGH (>0.7) and doctors agree, commit to their answer.
 - If they disagree, weigh the quality of cited evidence and the internal \
-consistency of each doctor's reasoning across rounds.
-- Consider whether a doctor changed position across rounds — changes backed \
-by strong evidence are a sign of good reasoning, not weakness.
-- Return "maybe" ONLY when evidence is genuinely insufficient or contradictory \
-even after the full debate.
+consistency of each doctor's reasoning. Pick the better-supported side.
+- Return "maybe" ONLY as a last resort when doctors directly contradict each \
+other AND neither side has convincing evidence.
 - FINAL_ANSWER must be exactly one of: yes, no, maybe
 """
 
@@ -167,6 +170,15 @@ def run_judge(
         llm = create_llm()
 
     formatted = format_transcript_for_judge(transcript)
+
+    # Append trust score so the judge is truly trust-aware
+    trust_info = (
+        f"\n\nTRUST SCORE: {trust.overall:.3f}\n"
+        f"  Agent Agreement: {trust.agent_agreement:.2f}\n"
+        f"  Reasoning Consistency: {trust.reasoning_consistency:.2f}\n"
+        f"  Confidence Stability: {trust.confidence_stability:.2f}\n"
+    )
+    formatted += trust_info
 
     messages = [
         SystemMessage(content=JUDGE_SYSTEM_PROMPT),
