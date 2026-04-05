@@ -14,6 +14,8 @@ from src.retrieval.bm25_index import build_bm25_index
 from src.retrieval.reranker import load_reranker
 from src.retrieval.retrieve_evidence import retrieve_evidence_hybrid_reranked
 from src.debate import run_debate
+from src.Judge.pipeline import run_judge_on_transcript
+
 
 
 def main():
@@ -73,6 +75,27 @@ def main():
     print(f"Doctor A: {transcript.doctor_a_final_position} (confidence: {transcript.doctor_a_final_confidence})")
     print(f"Doctor B: {transcript.doctor_b_final_position} (confidence: {transcript.doctor_b_final_confidence})")
     print(f"Ground truth: {ground_truth}")
+    print("=" * 60)
+
+    # ── 5. Run judge pipeline (reuses the transcript from step 3) ──
+    print("\nRunning judge pipeline...")
+    verdict, trust, result = run_judge_on_transcript(
+        transcript=transcript,
+        ground_truth=ground_truth,
+    )
+
+    print("\n" + "=" * 60)
+    print("JUDGE VERDICT")
+    print("=" * 60)
+    print(f"Final Answer : {verdict.final_answer}")
+    print(f"Explanation  : {verdict.explanation}")
+    print(f"Debate Summary: {verdict.debate_summary}")
+    print(f"\nTrust Score  : {trust.overall:.3f}")
+    print(f"  Agreement       : {trust.agent_agreement:.2f}")
+    print(f"  Consistency     : {trust.reasoning_consistency:.2f}")
+    print(f"  Stability       : {trust.confidence_stability:.2f}")
+    if result:
+        print(f"\nCorrect: {result.correct}")
     print("=" * 60)
 
 

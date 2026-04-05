@@ -1,5 +1,6 @@
 datasets==3.5.0
 sentence-transformers
+
 chromadb
 rank-bm25
 numpy
@@ -10,6 +11,10 @@ ipykernel
 ipywidgets
 transformers
 torch
+
+# Person 3: Judge & Evaluation
+scipy>=1.11.0
+pydantic>=2.0.0
 
 # Person 2: Debate System
 langchain==1.2.15

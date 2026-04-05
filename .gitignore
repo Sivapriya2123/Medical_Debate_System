@@ -11,3 +11,5 @@ data/
 *_old.py/
 chroma_store*/
 .env
+.env.example
+venv/
