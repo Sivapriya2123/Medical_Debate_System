@@ -53,7 +53,7 @@ Question --> [Hybrid Retrieval] --> [Doctor A] <--> [Doctor B] --> [Trust Scorin
 
 ## Demo
 
-https://github.com/user-attachments/assets/REPLACE_WITH_YOUR_VIDEO_ID
+[![Watch the video](https://img.youtube.com/vi/Z5y2SbixYeo/maxresdefault.jpg)](https://youtu.be/Z5y2SbixYeo)
 
 A React + FastAPI web interface lets you interact with the full pipeline visually:
 
