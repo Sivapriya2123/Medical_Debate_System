@@ -1,15 +1,63 @@
-.DS_Store
+# Python
 __pycache__/
 *.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Environment
+.env
+venv/
+.venv/
+*.save
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Jupyter
 .ipynb_checkpoints/
 
-chroma_store/
-outputs/
+# ChromaDB stores (large, regenerable)
+chroma_store*/
+
+# Large data files (regenerable)
 data/
 
-*.save
-*_old.py/
-chroma_store*/
-.env
-.env.example
-venv/
+# Temporary/old files
+*_old.py
+
+# OS
+Thumbs.db
+Desktop.ini
+
+# Claude Code session data
+.claude/
+
+# Images
+*.png
+*.svg
+/Screenshot*.png
+
+# Project docs not needed in repo
+GenAI_Task_Setup.xlsx
+medical_debate_project_proposal.pdf
+Screenshot*.png
+CODEBASE_AUDIT_README.md
+PHASE_*_EXECUTION_GUIDE.md
+EXPERIMENT_REPORT.md
+experiments/REPORT_OUTLINE.md
+FRONTEND_BUILD_GUIDE.md
+
+# Chainlit (removed, using React now)
+chainlit.md
+.chainlit/
+
+# Frontend build artifacts
+ui/frontend/node_modules/
+ui/frontend/dist/
