@@ -1,0 +1,70 @@
+{
+  "ablation_table": [
+    {
+      "system": "No retrieval (baseline)",
+      "accuracy": "38.0%",
+      "maybe_rate": "--",
+      "weights": "--"
+    },
+    {
+      "system": "RAG only (no debate)",
+      "accuracy": "65.0%",
+      "maybe_rate": "--",
+      "weights": "--"
+    },
+    {
+      "system": "Debate + majority vote",
+      "accuracy": "78.0%",
+      "maybe_rate": "--",
+      "weights": "--"
+    },
+    {
+      "system": "Debate + static trust (original)",
+      "accuracy": "77.0%",
+      "maybe_rate": "11.5%",
+      "weights": "0.40/0.35/0.25"
+    },
+    {
+      "system": "Debate + GRPO judge (Phase 1)",
+      "accuracy": "79.0%",
+      "maybe_rate": "7.3%",
+      "weights": "static"
+    },
+    {
+      "system": "Debate + optimized weights (Phase 2)",
+      "accuracy": "78.0%",
+      "maybe_rate": "10.4%",
+      "weights": "0.00/0.35/0.65"
+    },
+    {
+      "system": "Debate + adaptive weights (Phase 2)",
+      "accuracy": "78.0%",
+      "maybe_rate": "10.4%",
+      "weights": "per-regime"
+    },
+    {
+      "system": "Debate + optimized weights + thresholds",
+      "accuracy": "78.0%",
+      "maybe_rate": "9.4%",
+      "weights": "optimized"
+    }
+  ],
+  "phase_1_best_variant": "decisive_v1",
+  "phase_2_best_weights": [
+    0.0,
+    0.35000000000000003,
+    0.6499999999999999
+  ],
+  "phase_2_regime_weights": {
+    "doctors_agree": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "doctors_mixed": [
+      0.0,
+      0.4,
+      0.6
+    ]
+  }
+}

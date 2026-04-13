@@ -1,0 +1,45 @@
+# === GRPO Integration Config ===
+# Phase 0: Data collection and baseline
+# Phase 1: Judge GRPO training
+# Phase 2: Debate agent GRPO training (extension)
+# Phase 3: Trust weight learning (extension)
+
+phase_0:
+  # Full evaluation settings
+  pubmedqa_path: "data/qiaojin___pub_med_qa/pqa_labeled"  # HuggingFace cached path
+  num_samples: 500                            # full test set
+  output_traces: "experiments/traces/debate_traces_full.jsonl"
+
+  # System variants to evaluate
+  variants:
+    - "baseline_no_retrieval"
+    - "baseline_rag"
+    - "debate_no_trust"
+    - "full_system"
+
+phase_1:
+  # Judge GRPO training
+  model_name: "Qwen/Qwen2.5-3B-Instruct"   # or use prompt-optimization with GPT-4o-mini
+  approach: "open_source"                     # "open_source" or "prompt_optimization"
+
+  grpo:
+    num_generations: 6
+    learning_rate: 1.0e-6
+    num_epochs: 3
+    batch_size: 4
+    kl_coeff: 0.05
+    clip_range: 0.2
+    max_new_tokens: 512
+
+  rewards:
+    correctness: 1.0
+    format_compliance: 0.25
+    anti_maybe_penalty: -0.3
+    evidence_citation: 0.25
+
+  data:
+    train_split: 0.8
+    val_split: 0.2
+    traces_path: "experiments/traces/debate_traces_full.jsonl"
+
+  output_dir: "experiments/checkpoints/judge_grpo/"

@@ -1,0 +1,218 @@
+{
+  "total_samples": 100,
+  "total_errors": 23,
+  "error_rate": 0.23,
+  "category_counts": {
+    "both_doctors_wrong": 21,
+    "gold_is_maybe": 3,
+    "high_trust_but_wrong": 12,
+    "doctors_agree_but_wrong": 12,
+    "maybe_overcorrection": 11,
+    "direction_flip": 9,
+    "doctor_b_wrong_a_right": 1,
+    "judge_ignored_correct_doctor_a": 1,
+    "doctor_a_wrong_b_right": 1,
+    "judge_ignored_correct_doctor_b": 1
+  },
+  "both_doctors_wrong_count": 21,
+  "recoverable_count": 2,
+  "theoretical_max_accuracy": 0.79,
+  "examples": {
+    "both_doctors_wrong": [
+      {
+        "question": "Counter sampling combined with medical provider education: do they alter prescribing behavior?",
+        "gold": "maybe",
+        "judge_pred": "yes",
+        "doc_a": "yes",
+        "doc_b": "yes",
+        "trust": 0.9559
+      },
+      {
+        "question": "The promise of specialty pharmaceuticals: are they worth the price?",
+        "gold": "yes",
+        "judge_pred": "maybe",
+        "doc_a": "maybe",
+        "doc_b": "maybe",
+        "trust": 0.9143
+      },
+      {
+        "question": "Does invasive diagnosis of nosocomial pneumonia during off-hours delay treatment?",
+        "gold": "no",
+        "judge_pred": "yes",
+        "doc_a": "maybe",
+        "doc_b": "yes",
+        "trust": 0.7673
+      }
+    ],
+    "gold_is_maybe": [
+      {
+        "question": "Counter sampling combined with medical provider education: do they alter prescribing behavior?",
+        "gold": "maybe",
+        "judge_pred": "yes",
+        "doc_a": "yes",
+        "doc_b": "yes",
+        "trust": 0.9559
+      },
+      {
+        "question": "Does accompanying metabolic syndrome contribute to heart dimensions in hypertensive patients?",
+        "gold": "maybe",
+        "judge_pred": "yes",
+        "doc_a": "yes",
+        "doc_b": "yes",
+        "trust": 0.9664
+      },
+      {
+        "question": "Can implant retention be recommended for treatment of infected TKA?",
+        "gold": "maybe",
+        "judge_pred": "no",
+        "doc_a": "maybe",
+        "doc_b": "no",
+        "trust": 0.7425
+      }
+    ],
+    "high_trust_but_wrong": [
+      {
+        "question": "Counter sampling combined with medical provider education: do they alter prescribing behavior?",
+        "gold": "maybe",
+        "judge_pred": "yes",
+        "doc_a": "yes",
+        "doc_b": "yes",
+        "trust": 0.9559
+      },
+      {
+        "question": "The promise of specialty pharmaceuticals: are they worth the price?",
+        "gold": "yes",
+        "judge_pred": "maybe",
+        "doc_a": "maybe",
+        "doc_b": "maybe",
+        "trust": 0.9143
+      },
+      {
+        "question": "Undescended testes: does age at orchiopexy affect survival of the testis?",
+        "gold": "no",
+        "judge_pred": "maybe",
+        "doc_a": "maybe",
+        "doc_b": "maybe",
+        "trust": 0.9292
+      }
+    ],
+    "doctors_agree_but_wrong": [
+      {
+        "question": "Counter sampling combined with medical provider education: do they alter prescribing behavior?",
+        "gold": "maybe",
+        "judge_pred": "yes",
+        "doc_a": "yes",
+        "doc_b": "yes",
+        "trust": 0.9559
+      },
+      {
+        "question": "The promise of specialty pharmaceuticals: are they worth the price?",
+        "gold": "yes",
+        "judge_pred": "maybe",
+        "doc_a": "maybe",
+        "doc_b": "maybe",
+        "trust": 0.9143
+      },
+      {
+        "question": "Undescended testes: does age at orchiopexy affect survival of the testis?",
+        "gold": "no",
+        "judge_pred": "maybe",
+        "doc_a": "maybe",
+        "doc_b": "maybe",
+        "trust": 0.9292
+      }
+    ],
+    "maybe_overcorrection": [
+      {
+        "question": "The promise of specialty pharmaceuticals: are they worth the price?",
+        "gold": "yes",
+        "judge_pred": "maybe",
+        "doc_a": "maybe",
+        "doc_b": "maybe",
+        "trust": 0.9143
+      },
+      {
+        "question": "Undescended testes: does age at orchiopexy affect survival of the testis?",
+        "gold": "no",
+        "judge_pred": "maybe",
+        "doc_a": "maybe",
+        "doc_b": "maybe",
+        "trust": 0.9292
+      },
+      {
+        "question": "Are pediatric concussion patients compliant with discharge instructions?",
+        "gold": "yes",
+        "judge_pred": "maybe",
+        "doc_a": "maybe",
+        "doc_b": "maybe",
+        "trust": 0.868
+      }
+    ],
+    "direction_flip": [
+      {
+        "question": "Does invasive diagnosis of nosocomial pneumonia during off-hours delay treatment?",
+        "gold": "no",
+        "judge_pred": "yes",
+        "doc_a": "maybe",
+        "doc_b": "yes",
+        "trust": 0.7673
+      },
+      {
+        "question": "The effective orifice area/patient aortic annulus area ratio: a better way to compare different bioprostheses?",
+        "gold": "yes",
+        "judge_pred": "no",
+        "doc_a": "maybe",
+        "doc_b": "no",
+        "trust": 0.7334
+      },
+      {
+        "question": "Are endometrial polyps from pre-menopausal women similar to post-menopausal women?",
+        "gold": "no",
+        "judge_pred": "yes",
+        "doc_a": "maybe",
+        "doc_b": "yes",
+        "trust": 0.7292
+      }
+    ],
+    "doctor_b_wrong_a_right": [
+      {
+        "question": "Can implant retention be recommended for treatment of infected TKA?",
+        "gold": "maybe",
+        "judge_pred": "no",
+        "doc_a": "maybe",
+        "doc_b": "no",
+        "trust": 0.7425
+      }
+    ],
+    "judge_ignored_correct_doctor_a": [
+      {
+        "question": "Can implant retention be recommended for treatment of infected TKA?",
+        "gold": "maybe",
+        "judge_pred": "no",
+        "doc_a": "maybe",
+        "doc_b": "no",
+        "trust": 0.7425
+      }
+    ],
+    "doctor_a_wrong_b_right": [
+      {
+        "question": "Long-term significance of postictal psychotic episodes II. Are they predictive of interictal psychotic episodes?",
+        "gold": "yes",
+        "judge_pred": "maybe",
+        "doc_a": "maybe",
+        "doc_b": "yes",
+        "trust": 0.7025
+      }
+    ],
+    "judge_ignored_correct_doctor_b": [
+      {
+        "question": "Long-term significance of postictal psychotic episodes II. Are they predictive of interictal psychotic episodes?",
+        "gold": "yes",
+        "judge_pred": "maybe",
+        "doc_a": "maybe",
+        "doc_b": "yes",
+        "trust": 0.7025
+      }
+    ]
+  }
+}

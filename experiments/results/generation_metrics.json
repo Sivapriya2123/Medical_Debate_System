@@ -1,0 +1,16 @@
+{
+  "faithfulness_doctor_a": 0.016778895813742693,
+  "faithfulness_doctor_b": 0.015916736525884656,
+  "faithfulness_judge": 0.019356325043185747,
+  "relevancy_doctor_a": 0.5562536780213251,
+  "relevancy_doctor_b": 0.58577632057485,
+  "relevancy_judge": 0.6661997246217833,
+  "citation_accuracy_doctor_a": 0.9989837398373984,
+  "citation_rate_doctor_a": 0.984,
+  "citation_accuracy_doctor_b": 0.9989816700610998,
+  "citation_rate_doctor_b": 0.982,
+  "citation_accuracy_judge": 1.0,
+  "citation_rate_judge": 0.492,
+  "faithfulness_correct": 0.020554748191649645,
+  "faithfulness_wrong": 0.016612566782228933
+}

@@ -1,0 +1,170 @@
+[
+  {
+    "variant_name": "decisive_v1",
+    "n_samples": 400,
+    "accuracy": 0.6975,
+    "mean_reward": 0.6765000000000001,
+    "std_reward": 0.4961327947233483,
+    "maybe_overcorrection_rate": 0.08284023668639054,
+    "maybe_overcorrection_count": 28,
+    "prediction_distribution": {
+      "yes": 269,
+      "no": 93,
+      "maybe": 38
+    },
+    "per_gold_accuracy": {
+      "yes": {
+        "accuracy": 0.9027777777777778,
+        "count": 216
+      },
+      "no": {
+        "accuracy": 0.6065573770491803,
+        "count": 122
+      },
+      "maybe": {
+        "accuracy": 0.16129032258064516,
+        "count": 62
+      }
+    }
+  },
+  {
+    "variant_name": "current",
+    "n_samples": 400,
+    "accuracy": 0.68,
+    "mean_reward": 0.6485,
+    "std_reward": 0.5185535170066827,
+    "maybe_overcorrection_rate": 0.1242603550295858,
+    "maybe_overcorrection_count": 42,
+    "prediction_distribution": {
+      "yes": 259,
+      "maybe": 55,
+      "no": 86
+    },
+    "per_gold_accuracy": {
+      "yes": {
+        "accuracy": 0.8703703703703703,
+        "count": 216
+      },
+      "no": {
+        "accuracy": 0.5819672131147541,
+        "count": 122
+      },
+      "maybe": {
+        "accuracy": 0.20967741935483872,
+        "count": 62
+      }
+    }
+  },
+  {
+    "variant_name": "evolved_v2",
+    "n_samples": 400,
+    "accuracy": 0.6725,
+    "mean_reward": 0.63725,
+    "std_reward": 0.526295959988294,
+    "maybe_overcorrection_rate": 0.1390532544378698,
+    "maybe_overcorrection_count": 47,
+    "prediction_distribution": {
+      "yes": 255,
+      "maybe": 60,
+      "no": 85
+    },
+    "per_gold_accuracy": {
+      "yes": {
+        "accuracy": 0.8611111111111112,
+        "count": 216
+      },
+      "no": {
+        "accuracy": 0.5737704918032787,
+        "count": 122
+      },
+      "maybe": {
+        "accuracy": 0.20967741935483872,
+        "count": 62
+      }
+    }
+  },
+  {
+    "variant_name": "evolved_v1",
+    "n_samples": 400,
+    "accuracy": 0.67,
+    "mean_reward": 0.6317499999999999,
+    "std_reward": 0.5313821012228395,
+    "maybe_overcorrection_rate": 0.15088757396449703,
+    "maybe_overcorrection_count": 51,
+    "prediction_distribution": {
+      "yes": 250,
+      "maybe": 65,
+      "no": 85
+    },
+    "per_gold_accuracy": {
+      "yes": {
+        "accuracy": 0.8518518518518519,
+        "count": 216
+      },
+      "no": {
+        "accuracy": 0.5737704918032787,
+        "count": 122
+      },
+      "maybe": {
+        "accuracy": 0.22580645161290322,
+        "count": 62
+      }
+    }
+  },
+  {
+    "variant_name": "evolved_v4",
+    "n_samples": 400,
+    "accuracy": 0.6325,
+    "mean_reward": 0.5815,
+    "std_reward": 0.5564690018320877,
+    "maybe_overcorrection_rate": 0.20118343195266272,
+    "maybe_overcorrection_count": 68,
+    "prediction_distribution": {
+      "yes": 234,
+      "maybe": 82,
+      "no": 84
+    },
+    "per_gold_accuracy": {
+      "yes": {
+        "accuracy": 0.7870370370370371,
+        "count": 216
+      },
+      "no": {
+        "accuracy": 0.5655737704918032,
+        "count": 122
+      },
+      "maybe": {
+        "accuracy": 0.22580645161290322,
+        "count": 62
+      }
+    }
+  },
+  {
+    "variant_name": "evolved_v3",
+    "n_samples": 400,
+    "accuracy": 0.61,
+    "mean_reward": 0.54325,
+    "std_reward": 0.5787092858249296,
+    "maybe_overcorrection_rate": 0.26331360946745563,
+    "maybe_overcorrection_count": 89,
+    "prediction_distribution": {
+      "yes": 207,
+      "maybe": 112,
+      "no": 81
+    },
+    "per_gold_accuracy": {
+      "yes": {
+        "accuracy": 0.7129629629629629,
+        "count": 216
+      },
+      "no": {
+        "accuracy": 0.5491803278688525,
+        "count": 122
+      },
+      "maybe": {
+        "accuracy": 0.3709677419354839,
+        "count": 62
+      }
+    }
+  }
+]

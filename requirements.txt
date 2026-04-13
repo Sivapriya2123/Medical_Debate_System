@@ -1,23 +1,30 @@
-datasets==3.5.0
-sentence-transformers
-
-chromadb
-rank-bm25
-numpy
-pandas
-tqdm
-jupyter
-ipykernel
-ipywidgets
-transformers
-torch
-
-# Person 3: Judge & Evaluation
-scipy>=1.11.0
-pydantic>=2.0.0
-
-# Person 2: Debate System
+# Core LLM & Orchestration
 langchain==1.2.15
 langchain-openai==1.1.12
 langgraph==1.1.6
 python-dotenv==1.2.2
+
+# Retrieval
+chromadb==1.5.5
+rank-bm25==0.2.2
+sentence-transformers==5.3.0
+datasets==3.5.0
+
+# ML / Computation
+numpy>=2.0.0
+scipy>=1.11.0
+torch>=2.0.0
+transformers>=5.0.0
+
+# Data & Utilities
+pandas>=2.0.0
+tqdm>=4.60.0
+pydantic>=2.0.0
+
+# Visualization (for figure generation)
+matplotlib>=3.8.0
+
+# Notebooks (optional)
+jupyter
+ipykernel
+ipywidgets

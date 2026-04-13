@@ -1,0 +1,282 @@
+[
+  {
+    "variant_name": "decisive_v1",
+    "n_samples": 400,
+    "accuracy": 0.7,
+    "mean_reward": 0.67825,
+    "std_reward": 0.49648961469501046,
+    "maybe_overcorrection_rate": 0.08579881656804733,
+    "maybe_overcorrection_count": 29,
+    "prediction_distribution": {
+      "yes": 269,
+      "maybe": 40,
+      "no": 91
+    },
+    "per_gold_accuracy": {
+      "yes": {
+        "accuracy": 0.8981481481481481,
+        "count": 216
+      },
+      "no": {
+        "accuracy": 0.6147540983606558,
+        "count": 122
+      },
+      "maybe": {
+        "accuracy": 0.1774193548387097,
+        "count": 62
+      }
+    }
+  },
+  {
+    "variant_name": "current",
+    "n_samples": 400,
+    "accuracy": 0.6775,
+    "mean_reward": 0.6475,
+    "std_reward": 0.516956236058721,
+    "maybe_overcorrection_rate": 0.11834319526627218,
+    "maybe_overcorrection_count": 40,
+    "prediction_distribution": {
+      "yes": 262,
+      "maybe": 51,
+      "no": 87
+    },
+    "per_gold_accuracy": {
+      "yes": {
+        "accuracy": 0.875,
+        "count": 216
+      },
+      "no": {
+        "accuracy": 0.5819672131147541,
+        "count": 122
+      },
+      "maybe": {
+        "accuracy": 0.1774193548387097,
+        "count": 62
+      }
+    }
+  },
+  {
+    "variant_name": "structured_v2",
+    "n_samples": 400,
+    "accuracy": 0.6775,
+    "mean_reward": 0.6445000000000001,
+    "std_reward": 0.5215551265206776,
+    "maybe_overcorrection_rate": 0.1301775147928994,
+    "maybe_overcorrection_count": 44,
+    "prediction_distribution": {
+      "yes": 260,
+      "maybe": 58,
+      "no": 82
+    },
+    "per_gold_accuracy": {
+      "yes": {
+        "accuracy": 0.875,
+        "count": 216
+      },
+      "no": {
+        "accuracy": 0.5573770491803278,
+        "count": 122
+      },
+      "maybe": {
+        "accuracy": 0.22580645161290322,
+        "count": 62
+      }
+    }
+  },
+  {
+    "variant_name": "decisive_v3",
+    "n_samples": 400,
+    "accuracy": 0.6275,
+    "mean_reward": 0.6245,
+    "std_reward": 0.4882619686193058,
+    "maybe_overcorrection_rate": 0.011834319526627219,
+    "maybe_overcorrection_count": 4,
+    "prediction_distribution": {
+      "yes": 326,
+      "no": 65,
+      "maybe": 9
+    },
+    "per_gold_accuracy": {
+      "yes": {
+        "accuracy": 0.9305555555555556,
+        "count": 216
+      },
+      "no": {
+        "accuracy": 0.36885245901639346,
+        "count": 122
+      },
+      "maybe": {
+        "accuracy": 0.08064516129032258,
+        "count": 62
+      }
+    }
+  },
+  {
+    "variant_name": "doctor_weight_v1",
+    "n_samples": 400,
+    "accuracy": 0.625,
+    "mean_reward": 0.6002500000000001,
+    "std_reward": 0.5216559570253176,
+    "maybe_overcorrection_rate": 0.09763313609467456,
+    "maybe_overcorrection_count": 33,
+    "prediction_distribution": {
+      "yes": 294,
+      "maybe": 42,
+      "no": 64
+    },
+    "per_gold_accuracy": {
+      "yes": {
+        "accuracy": 0.8981481481481481,
+        "count": 216
+      },
+      "no": {
+        "accuracy": 0.38524590163934425,
+        "count": 122
+      },
+      "maybe": {
+        "accuracy": 0.14516129032258066,
+        "count": 62
+      }
+    }
+  },
+  {
+    "variant_name": "doctor_weight_v2",
+    "n_samples": 400,
+    "accuracy": 0.6125,
+    "mean_reward": 0.58625,
+    "std_reward": 0.5260094462079554,
+    "maybe_overcorrection_rate": 0.10355029585798817,
+    "maybe_overcorrection_count": 35,
+    "prediction_distribution": {
+      "yes": 304,
+      "maybe": 46,
+      "no": 50
+    },
+    "per_gold_accuracy": {
+      "yes": {
+        "accuracy": 0.9074074074074074,
+        "count": 216
+      },
+      "no": {
+        "accuracy": 0.3114754098360656,
+        "count": 122
+      },
+      "maybe": {
+        "accuracy": 0.1774193548387097,
+        "count": 62
+      }
+    }
+  },
+  {
+    "variant_name": "trust_reframe_v2",
+    "n_samples": 400,
+    "accuracy": 0.5975,
+    "mean_reward": 0.533,
+    "std_reward": 0.5768544010406785,
+    "maybe_overcorrection_rate": 0.25443786982248523,
+    "maybe_overcorrection_count": 86,
+    "prediction_distribution": {
+      "yes": 218,
+      "maybe": 103,
+      "no": 79
+    },
+    "per_gold_accuracy": {
+      "yes": {
+        "accuracy": 0.7222222222222222,
+        "count": 216
+      },
+      "no": {
+        "accuracy": 0.5409836065573771,
+        "count": 122
+      },
+      "maybe": {
+        "accuracy": 0.27419354838709675,
+        "count": 62
+      }
+    }
+  },
+  {
+    "variant_name": "decisive_v2",
+    "n_samples": 400,
+    "accuracy": 0.59,
+    "mean_reward": 0.5067499999999999,
+    "std_reward": 0.5984809416347358,
+    "maybe_overcorrection_rate": 0.32840236686390534,
+    "maybe_overcorrection_count": 111,
+    "prediction_distribution": {
+      "yes": 182,
+      "maybe": 144,
+      "no": 74
+    },
+    "per_gold_accuracy": {
+      "yes": {
+        "accuracy": 0.6481481481481481,
+        "count": 216
+      },
+      "no": {
+        "accuracy": 0.5163934426229508,
+        "count": 122
+      },
+      "maybe": {
+        "accuracy": 0.532258064516129,
+        "count": 62
+      }
+    }
+  },
+  {
+    "variant_name": "structured_v1",
+    "n_samples": 400,
+    "accuracy": 0.5675,
+    "mean_reward": 0.488,
+    "std_reward": 0.5943113662046184,
+    "maybe_overcorrection_rate": 0.3136094674556213,
+    "maybe_overcorrection_count": 106,
+    "prediction_distribution": {
+      "yes": 205,
+      "maybe": 135,
+      "no": 60
+    },
+    "per_gold_accuracy": {
+      "yes": {
+        "accuracy": 0.6898148148148148,
+        "count": 216
+      },
+      "no": {
+        "accuracy": 0.4016393442622951,
+        "count": 122
+      },
+      "maybe": {
+        "accuracy": 0.46774193548387094,
+        "count": 62
+      }
+    }
+  },
+  {
+    "variant_name": "trust_reframe_v1",
+    "n_samples": 400,
+    "accuracy": 0.5175,
+    "mean_reward": 0.41550000000000004,
+    "std_reward": 0.6127477050140621,
+    "maybe_overcorrection_rate": 0.40236686390532544,
+    "maybe_overcorrection_count": 136,
+    "prediction_distribution": {
+      "yes": 194,
+      "maybe": 173,
+      "no": 33
+    },
+    "per_gold_accuracy": {
+      "yes": {
+        "accuracy": 0.6527777777777778,
+        "count": 216
+      },
+      "no": {
+        "accuracy": 0.23770491803278687,
+        "count": 122
+      },
+      "maybe": {
+        "accuracy": 0.5967741935483871,
+        "count": 62
+      }
+    }
+  }
+]

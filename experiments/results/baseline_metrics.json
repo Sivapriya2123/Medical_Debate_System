@@ -1,0 +1,25 @@
+{
+  "n": 500,
+  "judge_accuracy": 0.696,
+  "majority_accuracy": 0.704,
+  "judge_ci": [
+    0.654,
+    0.734
+  ],
+  "majority_ci": [
+    0.664,
+    0.742
+  ],
+  "maybe_overcorrection_rate": 0.1175115207373272,
+  "trust_accuracy_correlation": 0.07990653027840432,
+  "gold_distribution": {
+    "yes": 275,
+    "no": 159,
+    "maybe": 66
+  },
+  "judge_distribution": {
+    "yes": 317,
+    "maybe": 63,
+    "no": 120
+  }
+}

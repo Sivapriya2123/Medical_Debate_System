@@ -1,0 +1,243 @@
+{
+  "reports": [
+    {
+      "system_name": "baseline_no_retrieval",
+      "num_questions": 3,
+      "accuracy": 0.0,
+      "error_rate": 1.0,
+      "trust_correlation": null,
+      "per_question_results": [
+        {
+          "system_name": "baseline_no_retrieval",
+          "question": "Do mitochondria play a role in remodelling lace plant leaves during programmed cell death?",
+          "ground_truth": "yes",
+          "predicted_answer": "maybe",
+          "correct": false,
+          "trust_score": null,
+          "metadata": {
+            "raw_response": "ANSWER: maybe  \nEXPLANATION: Mitochondria are involved in various cellular processes, including energy production and apoptosis (programmed cell death). While it is known that they can influence cellular remodeling during apoptosis, the specific role of mitochondria in the remodeling of lace plant leaves during this process is not definitively established in the literature. Therefore, the answer is maybe."
+          }
+        },
+        {
+          "system_name": "baseline_no_retrieval",
+          "question": "Landolt C and snellen e acuity: differences in strabismus amblyopia?",
+          "ground_truth": "no",
+          "predicted_answer": "maybe",
+          "correct": false,
+          "trust_score": null,
+          "metadata": {
+            "raw_response": "ANSWER: maybe  \nEXPLANATION: The Landolt C and Snellen E tests are both used to assess visual acuity, but they may yield different results in individuals with strabismus amblyopia due to variations in visual processing and perception. The impact of strabismus on visual acuity can differ based on how the tests are designed and the individual's specific condition, leading to uncertainty in outcomes."
+          }
+        },
+        {
+          "system_name": "baseline_no_retrieval",
+          "question": "Syncope during bathing in infants, a pediatric form of water-induced urticaria?",
+          "ground_truth": "yes",
+          "predicted_answer": "no",
+          "correct": false,
+          "trust_score": null,
+          "metadata": {
+            "raw_response": "ANSWER: no  \nEXPLANATION: Syncope during bathing in infants is typically not associated with water-induced urticaria, which is an allergic reaction causing hives. Instead, syncope could be related to other factors such as temperature changes, immersion in water, or vasovagal responses, rather than an allergic mechanism."
+          }
+        }
+      ]
+    },
+    {
+      "system_name": "baseline_rag",
+      "num_questions": 3,
+      "accuracy": 0.3333,
+      "error_rate": 0.6667,
+      "trust_correlation": null,
+      "per_question_results": [
+        {
+          "system_name": "baseline_rag",
+          "question": "Do mitochondria play a role in remodelling lace plant leaves during programmed cell death?",
+          "ground_truth": "yes",
+          "predicted_answer": "yes",
+          "correct": true,
+          "trust_score": null,
+          "metadata": {
+            "raw_response": "ANSWER: yes  \nEXPLANATION: The evidence indicates that mitochondria play a significant role during programmed cell death (PCD) in lace plant leaves, as demonstrated by the study that examined mitochondrial dynamics and the effect of cyclosporine A treatment, which resulted in fewer perforations in leaves. This suggests that mitochondrial function is crucial for the remodelling process during PCD in this plant species."
+          }
+        },
+        {
+          "system_name": "baseline_rag",
+          "question": "Landolt C and snellen e acuity: differences in strabismus amblyopia?",
+          "ground_truth": "no",
+          "predicted_answer": "maybe",
+          "correct": false,
+          "trust_score": null,
+          "metadata": {
+            "raw_response": "ANSWER: maybe  \nEXPLANATION: The retrieved evidence indicates that there are small differences in visual acuity measurements between the Landolt C and Snellen E optotypes in patients with strabismus amblyopia. However, the significance and implications of these differences are not clearly established, leading to uncertainty in definitively stating the nature of the differences."
+          }
+        },
+        {
+          "system_name": "baseline_rag",
+          "question": "Syncope during bathing in infants, a pediatric form of water-induced urticaria?",
+          "ground_truth": "yes",
+          "predicted_answer": "maybe",
+          "correct": false,
+          "trust_score": null,
+          "metadata": {
+            "raw_response": "ANSWER: maybe  \nEXPLANATION: The evidence suggests a potential link between syncope during bathing in infants and a condition similar to aquagenic urticaria, as some infants exhibited symptoms after water exposure, which could imply an underlying hypersensitivity. However, the evidence does not definitively establish that syncope during bathing is a pediatric form of water-induced urticaria. Therefore, the answer remains uncertain."
+          }
+        }
+      ]
+    },
+    {
+      "system_name": "debate_no_trust",
+      "num_questions": 3,
+      "accuracy": 0.6667,
+      "error_rate": 0.3333,
+      "trust_correlation": null,
+      "per_question_results": [
+        {
+          "system_name": "debate_no_trust",
+          "question": "Do mitochondria play a role in remodelling lace plant leaves during programmed cell death?",
+          "ground_truth": "yes",
+          "predicted_answer": "yes",
+          "correct": true,
+          "trust_score": null,
+          "metadata": {
+            "doctor_a_final": "yes",
+            "doctor_b_final": "yes"
+          }
+        },
+        {
+          "system_name": "debate_no_trust",
+          "question": "Landolt C and snellen e acuity: differences in strabismus amblyopia?",
+          "ground_truth": "no",
+          "predicted_answer": "maybe",
+          "correct": false,
+          "trust_score": null,
+          "metadata": {
+            "doctor_a_final": "maybe",
+            "doctor_b_final": "maybe"
+          }
+        },
+        {
+          "system_name": "debate_no_trust",
+          "question": "Syncope during bathing in infants, a pediatric form of water-induced urticaria?",
+          "ground_truth": "yes",
+          "predicted_answer": "yes",
+          "correct": true,
+          "trust_score": null,
+          "metadata": {
+            "doctor_a_final": "maybe",
+            "doctor_b_final": "yes"
+          }
+        }
+      ]
+    },
+    {
+      "system_name": "full_system",
+      "num_questions": 3,
+      "accuracy": 0.6667,
+      "error_rate": 0.3333,
+      "trust_correlation": -0.2981,
+      "per_question_results": [
+        {
+          "system_name": "full_system",
+          "question": "Do mitochondria play a role in remodelling lace plant leaves during programmed cell death?",
+          "ground_truth": "yes",
+          "predicted_answer": "yes",
+          "correct": true,
+          "trust_score": 0.9705,
+          "metadata": {
+            "doctor_a_final": "yes",
+            "doctor_b_final": "yes",
+            "trust_breakdown": {
+              "weights": {
+                "agreement": 0.4,
+                "consistency": 0.35,
+                "stability": 0.25
+              },
+              "raw": {
+                "agreement": 1.0,
+                "consistency": 0.9514352083206177,
+                "stability": 0.95
+              }
+            },
+            "judge_explanation": "Both doctors agree that mitochondria play a significant role in remodelling lace plant leaves during programmed cell death (PCD). They cite [Evidence 1], which demonstrates that alterations in mitochondrial function significantly affect the PCD process, leading to fewer leaf perforations. Their consensus, supported by consistent reasoning and high confidence, reinforces the conclusion."
+          }
+        },
+        {
+          "system_name": "full_system",
+          "question": "Landolt C and snellen e acuity: differences in strabismus amblyopia?",
+          "ground_truth": "no",
+          "predicted_answer": "maybe",
+          "correct": false,
+          "trust_score": 0.9231,
+          "metadata": {
+            "doctor_a_final": "maybe",
+            "doctor_b_final": "maybe",
+            "trust_breakdown": {
+              "weights": {
+                "agreement": 0.4,
+                "consistency": 0.35,
+                "stability": 0.25
+              },
+              "raw": {
+                "agreement": 1.0,
+                "consistency": 0.8160589933395386,
+                "stability": 0.95
+              }
+            },
+            "judge_explanation": "Both doctors arrived at a consensus of \"maybe\" regarding the differences in visual acuity between Landolt C and Snellen E in strabismus amblyopia. Although the evidence indicates small differences in acuity measurements (mean difference of 0.55 lines), both doctors argue that the clinical significance of these differences remains uncertain and warrants further investigation. Their reasoning was consistent, and they both acknowledged the limitations of the sample size and the implications for cli"
+          }
+        },
+        {
+          "system_name": "full_system",
+          "question": "Syncope during bathing in infants, a pediatric form of water-induced urticaria?",
+          "ground_truth": "yes",
+          "predicted_answer": "yes",
+          "correct": true,
+          "trust_score": 0.764,
+          "metadata": {
+            "doctor_a_final": "maybe",
+            "doctor_b_final": "yes",
+            "trust_breakdown": {
+              "weights": {
+                "agreement": 0.4,
+                "consistency": 0.35,
+                "stability": 0.25
+              },
+              "raw": {
+                "agreement": 0.5,
+                "consistency": 0.9329258501529694,
+                "stability": 0.95
+              }
+            },
+            "judge_explanation": "Doctor B presented a compelling case linking syncope during bathing in infants to a form of aquagenic urticaria, supported by evidence from the small study that noted a familial history of dermographism and symptom resolution when baths were avoided. Although Doctor A raised valid concerns regarding the limitations of the study, the overall evidence suggests a significant connection between water exposure and the observed symptoms, leading to a definitive conclusion."
+          }
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "baseline_no_retrieval": {
+      "accuracy": 0.0,
+      "error_rate": 1.0,
+      "trust_correlation": null,
+      "num_questions": 3
+    },
+    "baseline_rag": {
+      "accuracy": 0.3333,
+      "error_rate": 0.6667,
+      "trust_correlation": null,
+      "num_questions": 3
+    },
+    "debate_no_trust": {
+      "accuracy": 0.6667,
+      "error_rate": 0.3333,
+      "trust_correlation": null,
+      "num_questions": 3
+    },
+    "full_system": {
+      "accuracy": 0.6667,
+      "error_rate": 0.3333,
+      "trust_correlation": -0.2981,
+      "num_questions": 3
+    }
+  }
+}

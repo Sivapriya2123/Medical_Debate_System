@@ -1,0 +1,63 @@
+{
+  "majority_vote": {
+    "accuracy": 0.78
+  },
+  "current_judge": {
+    "variant_name": "current",
+    "n_samples": 100,
+    "accuracy": 0.77,
+    "mean_reward": 0.7369999999999999,
+    "std_reward": 0.48655010019524186,
+    "maybe_overcorrection_rate": 0.11458333333333333,
+    "maybe_overcorrection_count": 11,
+    "prediction_distribution": {
+      "no": 33,
+      "yes": 55,
+      "maybe": 12
+    },
+    "per_gold_accuracy": {
+      "yes": {
+        "accuracy": 0.8135593220338984,
+        "count": 59
+      },
+      "no": {
+        "accuracy": 0.7567567567567568,
+        "count": 37
+      },
+      "maybe": {
+        "accuracy": 0.25,
+        "count": 4
+      }
+    }
+  },
+  "grpo_judge": {
+    "variant_name": "decisive_v1",
+    "n_samples": 100,
+    "accuracy": 0.79,
+    "mean_reward": 0.7689999999999999,
+    "std_reward": 0.45270188866405225,
+    "maybe_overcorrection_rate": 0.07291666666666667,
+    "maybe_overcorrection_count": 7,
+    "prediction_distribution": {
+      "no": 35,
+      "yes": 57,
+      "maybe": 8
+    },
+    "per_gold_accuracy": {
+      "yes": {
+        "accuracy": 0.8305084745762712,
+        "count": 59
+      },
+      "no": {
+        "accuracy": 0.7837837837837838,
+        "count": 37
+      },
+      "maybe": {
+        "accuracy": 0.25,
+        "count": 4
+      }
+    }
+  },
+  "variant_name": "decisive_v1",
+  "test_set_size": 100
+}

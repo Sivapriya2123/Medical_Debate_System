@@ -1,0 +1,13 @@
+system,question,ground_truth,predicted,correct,trust_score
+baseline_no_retrieval,Do mitochondria play a role in remodelling lace plant leaves during programmed cell death?,yes,maybe,False,
+baseline_no_retrieval,Landolt C and snellen e acuity: differences in strabismus amblyopia?,no,maybe,False,
+baseline_no_retrieval,"Syncope during bathing in infants, a pediatric form of water-induced urticaria?",yes,no,False,
+baseline_rag,Do mitochondria play a role in remodelling lace plant leaves during programmed cell death?,yes,yes,True,
+baseline_rag,Landolt C and snellen e acuity: differences in strabismus amblyopia?,no,maybe,False,
+baseline_rag,"Syncope during bathing in infants, a pediatric form of water-induced urticaria?",yes,maybe,False,
+debate_no_trust,Do mitochondria play a role in remodelling lace plant leaves during programmed cell death?,yes,yes,True,
+debate_no_trust,Landolt C and snellen e acuity: differences in strabismus amblyopia?,no,maybe,False,
+debate_no_trust,"Syncope during bathing in infants, a pediatric form of water-induced urticaria?",yes,yes,True,
+full_system,Do mitochondria play a role in remodelling lace plant leaves during programmed cell death?,yes,yes,True,0.9705
+full_system,Landolt C and snellen e acuity: differences in strabismus amblyopia?,no,maybe,False,0.9231
+full_system,"Syncope during bathing in infants, a pediatric form of water-induced urticaria?",yes,yes,True,0.764
